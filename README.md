@@ -10,7 +10,10 @@ rice environment in my OSX system.
 1. Install Mysql (I suggest and this fabric script expects MAMP):
     http://www.mamp.info/en/index.html
 
-2. At the command line run the install task:
+2. (Optional) Download and copy the m2.zip file from the installfest instructions:
+    https://drive.google.com/a/kuali.org/folderview?id=0B7RCL4ARSiGEZmNmUEVGS3BPbUk&usp=sharing
+
+3. At the command line run the install task:
     fab install
 
 
@@ -32,3 +35,15 @@ and not a production environment.
 * Mysql installed via mamp
 * No /java directory present
 * No rice db or user present in mysql server
+
+## Credits
+
+This is just a simple fabric script. If I had more time, I would write a kuali-rice
+brew formula. All the hard work was done by the kuali-rice developers, installfest 
+folks and people who work on the docs.
+
+    https://wiki.kuali.org/display/KULRICE/Kuali+Days+2013+-+Install+Fest+Workshop
+    http://site.kuali.org/rice/2.3.2/reference/html/IG.html
+
+The included rice directory is included for easier of setup as it was included in 
+the installfeset zip file.

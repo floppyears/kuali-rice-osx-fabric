@@ -2,6 +2,7 @@ import os, sys
 
 from fabric.api import local, lcd, task
 from fabric.colors import green
+from fabric.operations import prompt
 
 cellar_path = '/usr/local/Cellar'
 mysql_home = '/Applications/MAMP/Library/bin'
@@ -20,12 +21,15 @@ def setup_java_dir():
 
 def install_maven():
     local('brew install maven')
-    local('cp m2.zip ~/')
 
-    with(lcd('~/')):
-        local('unzip -q m2.zip')
+    use_maven_cache = prompt('Use cached maven zip? (y/N)', 'N')
+    if use_maven_cache.lower() == 'y':
+        local('cp m2.zip ~/')
+        with(lcd('~/')):
+            local('unzip -q m2.zip')
 
-    local('rm ~/m2.zip')
+        local('rm ~/m2.zip')
+
     add_environment_var('M2_HOME', get_mvn_home())
     # we don't set the m2_home/bin to path since brew took care of that
 
